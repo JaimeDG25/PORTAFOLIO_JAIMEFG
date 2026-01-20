@@ -4,9 +4,7 @@ const projects = [
     title: "Portafolio Web",
     description: "Portafolio personal desarrollado con Astro y Tailwind CSS.",
     images: [
-      "/me.webp",
-      "/image1.jpeg",
-      "/image2.jpeg"
+      "/soon.png",
     ],
     tech: ["Astro", "Tailwind", "TypeScript"],
     github: "https://github.com/tuusuario/portfolio",
@@ -26,19 +24,17 @@ const projects = [
     title: "EventosUTP Control",
     description: "Plataforma desarrollado con Django que permite registrar asistencias, labores realizadas y gestionar el pago de mentores.",
     images: [
-      "/me.webp",
+      "/django-1.png",
     ],
     tech: ["Python", "Django", "SQLServer","Boostrap"],
-    github: "https://github.com/tuusuario/incidencias",
+    github: "https://github.com/JaimeDG25/EventosUTP_Control_Django",
     demo: "https://tuportfolio.vercel.app"
   },
   {
     title: "Sistema de Tutorias Academicas",
     description: "Plataforma web desarrollada en .NET para la gestión de tutorías académicas, enfocada en el aprendizaje colaborativo.",
     images: [
-      "/me.webp",
-      "/image1.jpeg",
-      "/image2.jpeg"
+      "/soon.png",
     ],
     tech: ["C#", ".NET", "SQLServer","Boostrap"],
     github: "https://github.com/tuusuario/incidencias",
@@ -48,9 +44,7 @@ const projects = [
     title: "Sistema de Incidencias",
     description: "Sistema backend con Spring Boot, JWT y Spring Security",
     images: [
-      "/me.webp",
-      "/image1.jpeg",
-      "/image2.jpeg"
+      "/soon.png",
     ],
     tech: ["Java", "Spring Boot", "MySQL"],
     github: "https://github.com/tuusuario/incidencias",
@@ -60,9 +54,7 @@ const projects = [
     title: "Sistema de Incidencias",
     description: "Sistema backend con Spring Boot, JWT y Spring Security",
     images: [
-      "/me.webp",
-      "/image1.jpeg",
-      "/image2.jpeg"
+      "/soon.png",
     ],
     tech: ["Java", "Spring Boot", "MySQL"],
     github: "https://github.com/tuusuario/incidencias",
@@ -71,12 +63,11 @@ const projects = [
 ];
 ---
 
-<section class="py-20">
+<section id="projects" class="py-20">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center text-cyan-400 mb-4">
-      Proyectos
+    <h2 class="text-4xl font-bold text-center text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] mb-12">
+        Mis Proyectos
     </h2>
-
     <p class="text-center text-gray-500 mb-12">
       Algunos proyectos que he desarrollado
     </p>
@@ -154,8 +145,8 @@ const projects = [
 <script type="module">
   const gallery = [
     ["/flask-1.png", "/image1.jpeg", "/image2.jpeg"],
-    ["/me.webp", "/image1.jpeg", "/image2.jpeg"],
-    ["/flask-1.png", "/flask-2.png", "/flask-3.png","/flask-4.png", "/flask-5.png", "/flask-6.png","/flask-7.png", "/flask-8.png", "/flask-9.png"]
+    ["/flask-1.png", "/flask-2.png", "/flask-3.png","/flask-4.png", "/flask-5.png", "/flask-6.png","/flask-7.png", "/flask-8.png", "/flask-9.png"],
+    ["/django-1.png", "/django-2.png", "/django-3.png","/django-4.png", "/django-5.png", "/django-6.png"]
   ];
 
   let currentProject = 0;
