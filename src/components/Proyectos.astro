@@ -1,0 +1,205 @@
+---
+const projects = [
+  {
+    title: "Portafolio Web",
+    description: "Portafolio personal desarrollado con Astro y Tailwind CSS.",
+    images: [
+      "/me.webp",
+      "/image1.jpeg",
+      "/image2.jpeg"
+    ],
+    tech: ["Astro", "Tailwind", "TypeScript"],
+    github: "https://github.com/tuusuario/portfolio",
+    demo: "https://tuportfolio.vercel.app"
+  },
+  {
+    title: "Sistema de Gestión Académica",
+    description: "Sistema académico desarrollado con Flask que permite gestionar docentes, estudiantes, cursos y controlar la asistencia de manera eficiente.",
+    images: [
+      "/flask-1.png"
+    ],
+    tech: ["Python", "Flask", "MySQL", "Boostrap"],
+    github: "https://github.com/JaimeDG25/Registro_Asistencias_FLASK",
+    demo: "https://tuportfolio.vercel.app"
+  },
+  {
+    title: "EventosUTP Control",
+    description: "Plataforma desarrollado con Django que permite registrar asistencias, labores realizadas y gestionar el pago de mentores.",
+    images: [
+      "/me.webp",
+    ],
+    tech: ["Python", "Django", "SQLServer","Boostrap"],
+    github: "https://github.com/tuusuario/incidencias",
+    demo: "https://tuportfolio.vercel.app"
+  },
+  {
+    title: "Sistema de Tutorias Academicas",
+    description: "Plataforma web desarrollada en .NET para la gestión de tutorías académicas, enfocada en el aprendizaje colaborativo.",
+    images: [
+      "/me.webp",
+      "/image1.jpeg",
+      "/image2.jpeg"
+    ],
+    tech: ["C#", ".NET", "SQLServer","Boostrap"],
+    github: "https://github.com/tuusuario/incidencias",
+    demo: "https://tuportfolio.vercel.app"
+  },
+  {
+    title: "Sistema de Incidencias",
+    description: "Sistema backend con Spring Boot, JWT y Spring Security",
+    images: [
+      "/me.webp",
+      "/image1.jpeg",
+      "/image2.jpeg"
+    ],
+    tech: ["Java", "Spring Boot", "MySQL"],
+    github: "https://github.com/tuusuario/incidencias",
+    demo: "https://tuportfolio.vercel.app"
+  },
+  {
+    title: "Sistema de Incidencias",
+    description: "Sistema backend con Spring Boot, JWT y Spring Security",
+    images: [
+      "/me.webp",
+      "/image1.jpeg",
+      "/image2.jpeg"
+    ],
+    tech: ["Java", "Spring Boot", "MySQL"],
+    github: "https://github.com/tuusuario/incidencias",
+    demo: "https://tuportfolio.vercel.app"
+  },
+];
+---
+
+<section class="py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center text-cyan-400 mb-4">
+      Proyectos
+    </h2>
+
+    <p class="text-center text-gray-500 mb-12">
+      Algunos proyectos que he desarrollado
+    </p>
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project, pIndex) => (
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow">
+          <img
+            src={project.images[0]}
+            class="h-40 w-full object-cover rounded-t-xl cursor-pointer"
+            onclick={`openModal(${pIndex})`}
+          />
+          <!-- CONTENIDO -->
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              {project.title}
+            </h3>
+
+            <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm">
+              {project.description}
+            </p>
+
+            <div class="flex flex-wrap gap-2 mt-4">
+              {project.tech.map((tech) => (
+                <span class="px-3 py-1 text-xs rounded-full bg-blue-100 text-blue-600">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div class="flex gap-4 mt-6">
+              <a
+                href={project.github}
+                target="_blank"
+                class="flex-1 text-center py-2 rounded-lg border
+                text-gray-800 dark:text-white
+                hover:bg-gray-100 hover:text-gray-900
+                dark:hover:bg-gray-700 dark:hover:text-white
+                transition"
+              >
+                Código
+              </a>
+
+              <a
+                href={project.demo}
+                target="_blank"
+                class="flex-1 text-center py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
+              >
+                Demo
+              </a>
+            </div>
+          </div>
+        </div>
+        
+      ))}
+    </div>
+    
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50 ">
+  <button style="cursor: pointer;" class="absolute top-6 right-6 text-white text-3xl" onclick="closeModal()">
+    ✕
+  </button>
+  <button style="cursor: pointer;" class="absolute left-6 text-white text-4xl" onclick="prevImage()">
+    ‹
+  </button>
+  <img id="modalImage" class="max-h-[80vh] max-w-[90vw] rounded-xl" />
+  <button style="cursor: pointer;" class="absolute right-6 text-white text-4xl" onclick="nextImage()">
+    ›
+  </button>
+</div>
+
+<script type="module">
+  const gallery = [
+    ["/flask-1.png", "/image1.jpeg", "/image2.jpeg"],
+    ["/me.webp", "/image1.jpeg", "/image2.jpeg"],
+    ["/flask-1.png", "/flask-2.png", "/flask-3.png","/flask-4.png", "/flask-5.png", "/flask-6.png","/flask-7.png", "/flask-8.png", "/flask-9.png"]
+  ];
+
+  let currentProject = 0;
+  let currentImage = 0;
+
+  const modal = document.getElementById("modal");
+  const modalImage = document.getElementById("modalImage");
+
+  function openModal(projectIndex) {
+    currentProject = projectIndex;
+    currentImage = 0;
+
+    if (!modal || !modalImage) return;
+
+    modal.classList.remove("hidden");
+    updateImage();
+  }
+
+  function closeModal() {
+    modal?.classList.add("hidden");
+  }
+
+  function updateImage() {
+    if (!modalImage) return;
+    modalImage.src = gallery[currentProject][currentImage];
+  }
+
+  function nextImage() {
+    currentImage = (currentImage + 1) % gallery[currentProject].length;
+    updateImage();
+  }
+
+  function prevImage() {
+    currentImage =
+      (currentImage - 1 + gallery[currentProject].length) %
+      gallery[currentProject].length;
+    updateImage();
+  }
+
+  window.openModal = openModal;
+  window.closeModal = closeModal;
+  window.nextImage = nextImage;
+  window.prevImage = prevImage;
+</script>
+
+
+
